@@ -1,13 +1,198 @@
+<!doctype html>
 <html>
 
 <head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+	<meta charset="utf-8">
+	<title>Untitled Document</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+	<form id="formtest" method="POST" onsubmit="return validate()">
+		<div class="container- col-8">
+			<div class="row">
+				<div class="col">
+					<label for="firstName">firstName</label>
+					<input type="text" class="form-control " placeholder="First name" id="firstName"  onkeyup="validFirstName()">
+					<p id="demo"></p>
+				</div>
+				<div class="col">
+					<label for="lastName">lastName</label>
+					<input type="text" class="form-control " placeholder="Last name" id="lastName" onkeyup="validlastName()">
+					<p id="demo1"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email address</label>
+				<input type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp"
+					placeholder="Enter email" onkeyup="validemail()">
+				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+					else.</small>
+					<p id="demo2"></p>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Password</label>
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" onkeyup="validpws()">
+				<p id="demo3"></p>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword2">refesh Password</label>
+				<input type="password" class="form-control" id="exampleInputPassword2" placeholder="refeshPassword" onkeyup="validpws2()">
+				<p id="demo4"></p>
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput">SDT</label>
+				<input type="text" class="form-control" id="formGroupExampleInput" placeholder="number phone" onkeyup="validsdt()">
+				<p id="demo5"></p>
+			</div>
+			<div style="margin-left:45%">
+				<button type="submit" class="btn btn-warning" id="myInput">Submit</button>
+			</div>
+		</div>
+	</form>
 </body>
+<script>
+	
+	var demo = document.getElementById("demo");
+	var demo1 = document.getElementById("demo1");
+	var demo2 = document.getElementById("demo2");
+	var demo3 = document.getElementById("demo3");
+	var demo4 = document.getElementById("demo4");
+	var demo5 = document.getElementById("demo5");
+	var firstName = document.getElementById("firstName");
+	var lastName = document.getElementById("lastName");
+	var email = document.getElementById("exampleInputEmail1");
+	var pws = document.getElementById("exampleInputPassword1");
+	var pws2 = document.getElementById("exampleInputPassword2");
+	var sdt = document.getElementById("formGroupExampleInput");
+	var testname = false;
+	var testname1 = false;
+	var testname2 = false;
+	var testname3 = false;
+	var testname4 = false;
+	var testname5 = false;
+	var testname6 = false;
+ 
+function validFirstName() {
+	var right = /^[A-Za-z]/;
+	if (firstName.value.match(right) && firstName.value.length >3 &&  firstName.value.length <7) {
+		firstName.classList.add("true");
+		demo.innerHTML = "";
+		testname = true;
+	}
+	else{
+		firstName.classList.remove("true");
+		firstName.classList.add("false");
+		demo.innerHTML = "sai firstname";
+		testname = false;
+	}
+}
+function validlastName() {
+var right1 = /^[A-Za-z]/;
+	if (lastName.value.match(right1) && lastName.value.length >3 &&  lastName.value.length <7){
+		lastName.classList.add("true");
+		demo1.innerHTML = "";
+		testname1 = true;
+	}
+	else{
+		lastName.classList.remove("true");
+		lastName.classList.add("false");
+		demo1.innerHTML = "sai lastname";
+		testname1 = false;
+	}
+}
+
+function validemail()  {
+	var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+	if (email.value.match(re)){
+		email.classList.add("true");
+		demo2.innerHTML = "";
+		testname2 = true;
+	}
+	else{
+		email.classList.remove("true");
+		email.classList.add("false");
+		demo2.innerHTML = "sai email";
+		testname2 = false;
+	}
+}
+
+function validpws() {
+	var right3 = /^[A-Za-z0-9-]/;
+	if (pws.value.match(right3) && pws.value.length >6 &&  pws.value.length <32) {
+		pws.classList.add("true");
+		demo3.innerHTML = "";
+		testname3 = true;
+	}
+	else{
+		pws.classList.remove("true");
+		pws.classList.add("false");
+		demo3.innerHTML = "sai password";
+		testname3 = false;
+	}
+}
+function validpws2() {
+	if (pws.value === pws2.value){
+		pws2.classList.add("true");
+		demo4.innerHTML = "";
+		testname4 = true;
+	}
+	else{
+		pws2.classList.remove("true");
+		pws2.classList.add("false");
+		demo4.innerHTML = "không dống password";
+		testname4 = false;
+	}
+}
+function validsdt() {
+	var right4 = /^[0-9]/;
+	if (sdt.value.match(right4) && sdt.value.length >=9 &&  sdt.value.length <=11) {
+		sdt.classList.add("true");
+		demo5.innerHTML = "";
+		testname5 = true;
+	}
+	else{
+		sdt.classList.remove("true");
+		sdt.classList.add("false");
+		demo5.innerHTML = "sai số điện thoại";
+		testname5 = false;
+	}
+}
+function validate() {
+	validFirstName();
+	validlastName();
+	validemail();
+	validpws();
+	validpws2();
+	validsdt();
+	if (!testname || !testname1 || !testname2 || !testname3 || !testname4 || !testname5){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+</script>
+<style type="text/css">
+.false
+	{
+		background-image: url(invalid.png);
+		background-position: right top;
+		background-repeat: no-repeat;
+
+	}
+.true
+	{
+		background-image: url(valid.png);
+		background-position: right top;
+		background-repeat: no-repeat;
+	}
+#demo ,#demo1 ,#demo2, #demo3, #demo4,#demo5{
+	color: red;
+}
+</style>
 
 </html>
